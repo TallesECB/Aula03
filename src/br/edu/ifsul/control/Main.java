@@ -117,6 +117,7 @@ public class Main {
     produtoList.forEach( c -> {
         if(c.getId() == 3) {
             System.out.println(c + "teste 1");
+            return;
         }
     });
 
@@ -125,21 +126,36 @@ public class Main {
     for(Produto c : produtoList){
         if(c.getId() == 3) {
             System.out.println(c + "teste 2");
+            break;
         }
     }
 
 
-    Collections.sort(produtoList);
-    System.out.println(produtoList + "collection sort");
+    produtoList.sort(Comparator.comparingInt(Produto::getId)); //operador 4 pontos é o operador de resolução do escopo
+    System.out.println(produtoList + "comparator sort (lista ordenada)");
 
 
-    produtoList.sort(Comparator.comparingInt(Produto::getId));
-    System.out.println(produtoList + "comparator sort");
-
+    //metodo feito a partir do java 8
     produtoList.sort(Comparator.comparingInt(Produto::getId).reversed());
-    System.out.println(produtoList + "comparator sort com reversao");
+    System.out.println(produtoList + "comparator sort (lista ordenada) com reversao");
 
+    //metodo mais antigo de fazer, até o java 8
+    Collections.shuffle(produtoList);
+    System.out.println(produtoList + "collections shuffle (lista embaralhada), java antigo");
+    Collections.sort(produtoList);
+    System.out.println(produtoList + "collections sort (lista ordenada) em ordem crescente, java antigo");
+    Collections.reverse(produtoList);
+    System.out.println(produtoList + "collections sort (lista ordenada) em ordem decrescente, java antigo");
 
+    //estrategia de ordenação in line
+    produtoList.sort( (c1, c2) -> {
+        if(c1.getId() < c2.getId()) {
+            return 1;
+        } else if (c1.getId() > c2.getId()) {
+            return -1;
+        }
+        return 0;
+    });
 
     System.out.println("MAP");
     Map<Integer,Produto> proutoMap = new HashMap<>();
