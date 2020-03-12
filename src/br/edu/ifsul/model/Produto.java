@@ -1,7 +1,7 @@
 package br.edu.ifsul.model;
 
 
-public class Produto implements Comparable<Produto> {
+public class Produto implements Comparable {
     /* Atributos*/
     private int  id;
     private String nome;
@@ -67,11 +67,11 @@ public class Produto implements Comparable<Produto> {
     }
 
 
-    @Override public int compareTo(Produto outroProduto) {
-        if (this.id > outroProduto.getId()) {
-            return -1;
-        } if (this.id < outroProduto.getId()) {
+    @Override public int compareTo(Object outroProduto) {
+        if (this.id > ((Produto) outroProduto).getId()) {
             return 1;
+        } else if (this.id < ((Produto) outroProduto).getId()) {
+            return -1;
         }
         return 0;
     }

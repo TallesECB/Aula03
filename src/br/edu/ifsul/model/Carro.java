@@ -1,5 +1,6 @@
 package br.edu.ifsul.model;
 
+@SuppressWarnings("unused")
 public class Carro {
     private String marca;
     private String modelo;
@@ -19,6 +20,7 @@ public class Carro {
     // Metodos
 
 
+    @SuppressWarnings("unused")
     public String getMarca() {
         return marca;
     }
@@ -27,6 +29,7 @@ public class Carro {
         this.marca = marca;
     }
 
+    @SuppressWarnings("unused")
     public String getModelo() {
         return modelo;
     }
@@ -35,6 +38,7 @@ public class Carro {
         this.modelo = modelo;
     }
 
+    @SuppressWarnings("unused")
     public int getAnoFabricacao() {
         return anoFabricacao;
     }

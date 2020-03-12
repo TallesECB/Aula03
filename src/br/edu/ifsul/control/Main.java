@@ -6,10 +6,10 @@ import br.edu.ifsul.model.Funcionario;
 import br.edu.ifsul.model.Produto;
 
 import java.util.*;
-import java.util.stream.Collectors;
 
 public class Main {
 
+    @SuppressWarnings("unchecked")
     public static void main(String[] args) {
 
     // Tipo nome = objeto
@@ -104,20 +104,11 @@ public class Main {
     System.out.println("LIST");
     System.out.println(produtoList);
 
-    // Filtrando pelo ID 3
-
-    List<Produto> result = produtoList.stream()
-    .filter(a -> Objects.equals(a.getId(),3))
-    .collect(Collectors.toList());
-    System.out.println("Filter Obj 3 teste");
-    System.out.println(result);
-
     //outro metodo
 
     produtoList.forEach( c -> {
         if(c.getId() == 3) {
             System.out.println(c + "teste 1");
-            return;
         }
     });
 
@@ -142,8 +133,10 @@ public class Main {
     //metodo mais antigo de fazer, até o java 8
     Collections.shuffle(produtoList);
     System.out.println(produtoList + "collections shuffle (lista embaralhada), java antigo");
+
     Collections.sort(produtoList);
     System.out.println(produtoList + "collections sort (lista ordenada) em ordem crescente, java antigo");
+
     Collections.reverse(produtoList);
     System.out.println(produtoList + "collections sort (lista ordenada) em ordem decrescente, java antigo");
 
@@ -158,14 +151,25 @@ public class Main {
     });
 
     System.out.println("MAP");
-    Map<Integer,Produto> proutoMap = new HashMap<>();
-    proutoMap.put(produto1.getId(), produto1);
-    proutoMap.put(produto1.getId(), produto1);
-    proutoMap.put(produto5.getId(), produto5);
-    proutoMap.put(produto3.getId(), produto3);
-    proutoMap.put(produto6.getId(), produto6);
+    Map<Integer,Produto> produtoMap = new HashMap<>();
+    produtoMap.put(produto1.getId(), produto1);
+    produtoMap.put(produto1.getId(), produto1); //nao se repete, pois já tem o produto1 na hash
+    produtoMap.put(produto5.getId(), produto5);
+    produtoMap.put(produto3.getId(), produto3);
+    produtoMap.put(produto6.getId(), produto6);
+    System.out.println(produtoMap);
 
-    System.out.println(proutoMap.get(3));
+    System.out.println(produtoMap.get(3));
+
+
+    Map <String, Produto> prods = new HashMap<>();
+    prods.put("Produto 1", produto1);
+    prods.put("Produto 2", produto2);
+    prods.put("Produto 3", produto3);
+    prods.put("Produto 4", produto4);
+    prods.put("Produto 5", produto5);
+    //prods.put("Produto 1", produto1); // ele não adiciona de novo, pois já tem o produto1 na hashmap
+    System.out.println(prods);
 
 
 

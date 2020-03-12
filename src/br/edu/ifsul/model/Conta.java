@@ -1,5 +1,6 @@
 package br.edu.ifsul.model;
 
+@SuppressWarnings("ALL")
 public class Conta {
     // Atributo
     private double saldo;
